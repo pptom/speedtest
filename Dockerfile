@@ -7,11 +7,8 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
-
-# Prepare files and folders
-
-RUN mkdir -p /speedtest/
+    && docker-php-ext-install -j$(nproc) gd \
+    && mkdir -p /speedtest/
 
 # Copy sources
 
@@ -28,13 +25,13 @@ COPY docker/entrypoint.sh /
 
 # Prepare environment variabiles defaults
 
-ENV TITLE=LibreSpeed
-ENV MODE=standalone
-ENV PASSWORD=password
-ENV TELEMETRY=false
-ENV ENABLE_ID_OBFUSCATION=false
-ENV REDACT_IP_ADDRESSES=false
-ENV WEBPORT=80
+ENV TITLE=LibreSpeed \
+    MODE=standalone \
+    PASSWORD=password \
+    TELEMETRY=false \
+    ENABLE_ID_OBFUSCATION=false \
+    REDACT_IP_ADDRESSES=false \
+    WEBPORT=80
 
 # Final touches
 

@@ -274,10 +274,10 @@ function initUI(){
 		}
 	}
 </style>
-<title><?= getenv('TITLE') ?: 'LibreSpeed Example' ?></title>
+<title>SSCSi-网络测试</title>
 </head>
 <body>
-<h1><?= getenv('TITLE') ?: 'LibreSpeed Example' ?></h1>
+<h1>SSCSi-网络测试</h1>
 <div id="testWrapper">
 	<div id="startStopBtn" onclick="startStop()"></div><br/>
 	<?php if(getenv("TELEMETRY")=="true"){ ?>
@@ -286,25 +286,25 @@ function initUI(){
 	<div id="test">
 		<div class="testGroup">
 			<div class="testArea2">
-				<div class="testName">Ping</div>
+				<div class="testName">Ping-毫秒</div>
 				<div id="pingText" class="meterText" style="color:#AA6060"></div>
 				<div class="unit">ms</div>
 			</div>
 			<div class="testArea2">
-				<div class="testName">Jitter</div>
+				<div class="testName">抖动-毫秒</div>
 				<div id="jitText" class="meterText" style="color:#AA6060"></div>
 				<div class="unit">ms</div>
 			</div>
 		</div>
 		<div class="testGroup">
 			<div class="testArea">
-				<div class="testName">Download</div>
+				<div class="testName">下载</div>
 				<canvas id="dlMeter" class="meter"></canvas>
 				<div id="dlText" class="meterText"></div>
 				<div class="unit">Mbps</div>
 			</div>
 			<div class="testArea">
-				<div class="testName">Upload</div>
+				<div class="testName">上传</div>
 				<canvas id="ulMeter" class="meter"></canvas>
 				<div id="ulText" class="meterText"></div>
 				<div class="unit">Mbps</div>
@@ -320,7 +320,6 @@ function initUI(){
 			<img src="" id="resultsImg" />
 		</div>
 	</div>
-	<a href="https://github.com/librespeed/speedtest">Source code</a>
 </div>
 <div id="privacyPolicy" style="display:none">
     <h2>Privacy Policy</h2>

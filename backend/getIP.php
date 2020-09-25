@@ -83,7 +83,7 @@ if (isset($_GET["isp"])) {
     $isp = "";
 	$rawIspInfo=null;
     try {
-        $json = file_get_contents("https://ipinfo.io/" . $ip . "/json".getIpInfoTokenString());
+        $json = file_get_contents("http://ip-api.com/json/" . $ip);
         $details = json_decode($json, true);
 		$rawIspInfo=$details;
         if (array_key_exists("org", $details)){
@@ -97,8 +97,8 @@ if (isset($_GET["isp"])) {
 		}
         $clientLoc = NULL;
         $serverLoc = NULL;
-        if (array_key_exists("loc", $details)){
-            $clientLoc = $details["loc"];
+        if (array_key_exists("lat", $details)){
+            $clientLoc =  $details["lat"]. ", " . $details["lon"];
 		}
         if (isset($_GET["distance"])) {
             if ($clientLoc) {
@@ -107,10 +107,10 @@ if (isset($_GET["isp"])) {
 				if(file_exists($locFile)){
 					require $locFile;
 				}else{
-					$json = file_get_contents("https://ipinfo.io/json".getIpInfoTokenString());
+					$json = file_get_contents("http://ip-api.com/json");
 					$details = json_decode($json, true);
-					if (array_key_exists("loc", $details)){
-						$serverLoc = $details["loc"];
+					if (array_key_exists("lat", $details)){
+						$serverLoc = $details["lat"]. ", " . $details["lon"];
 					}
 					if($serverLoc){
 						$lf=fopen($locFile,"w");
